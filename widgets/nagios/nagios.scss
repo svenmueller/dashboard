@@ -2,7 +2,8 @@ $background: #444;
 $text: #fff;
 $success: #86d751;
 $warning: #edde43;
-$failure: #e3394f;
+$failure_prio_high: #e3394f;
+$failure_prio_low: #FF6600;
 
 .widget-nagios {
   li {
@@ -49,11 +50,21 @@ $failure: #e3394f;
     }
 
     &.red {
-      background-color: $failure;
+      background-color: $failure_prio_high;
 
       p {
         &.updated-at {
-          color: lighten($failure, 20%);
+          color: lighten($failure_prio_high, 20%);
+        }
+      }
+    }
+
+    &.orange {
+      background-color: $failure_prio_low;
+
+      p {
+        &.updated-at {
+          color: lighten($failure_prio_low, 20%);
         }
       }
     }

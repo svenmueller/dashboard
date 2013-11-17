@@ -6,12 +6,12 @@ SCHEDULER.every '30s' do
 
 
   environments = {
-    grid_prod: { url: 'http://grid.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
-    grid_stag: { url: 'http://monitoring.grid.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
-    sphere_prod: { url: 'http://monitoring.sphere.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
-    sphere_stag: { url: 'http://monitoring.sphere.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
-    misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
-    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' }
+    grid_prod: { url: 'http://grid.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'red', color_warning: 'yellow', color_ok: 'green' },
+    grid_stag: { url: 'http://monitoring.grid.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' },
+    sphere_prod: { url: 'http://monitoring.sphere.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'red', color_warning: 'yellow', color_ok: 'green' },
+    sphere_stag: { url: 'http://monitoring.sphere.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' },
+    misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' },
+    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' }
   }
 
   environments.each do |key, env|
@@ -34,7 +34,7 @@ SCHEDULER.every '30s' do
       end
     end
   
-    status = critical_count > 0 ? "red" : (warning_count > 0 ? "yellow" : "green")
+    status = critical_count > 0 ? env[:color_critical] : (warning_count > 0 ? env[:color_warning] : env[:color_ok])
   
     send_event('nagios-' + key.to_s, { criticals: critical_count, warnings: warning_count, status: status })
   end
