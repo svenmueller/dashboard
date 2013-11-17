@@ -10,8 +10,9 @@ SCHEDULER.every '30s' do
     grid_stag: { url: 'http://monitoring.grid.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' },
     sphere_prod: { url: 'http://monitoring.sphere.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'red', color_warning: 'yellow', color_ok: 'green' },
     sphere_stag: { url: 'http://monitoring.sphere.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' },
-    misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' },
-    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' }
+    misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'red', color_warning: 'yellow', color_ok: 'green' },
+    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' },
+    #muc: { url: 'http://monitoring.muc.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', color_critical: 'orange', color_warning: 'yellow', color_ok: 'green' }
   }
 
   environments.each do |key, env|
