@@ -1,23 +1,35 @@
 SCHEDULER.every '30s' do
   require 'bundler/setup'
-  require 'nagiosharder'
+  require "net/https"
+  require "uri"
+
+
 
   environments = {
-    prod: { url: 'http://grid.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: 'HowAreOurSystemsToday' },
-    dev: { url: 'http://monitoring.grid.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: 'HowAreOurSystemsToday' },
-    debug: true
+    grid_prod: { url: 'http://grid.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
+    grid_stag: { url: 'http://monitoring.grid.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
+    sphere_prod: { url: 'http://monitoring.sphere.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
+    sphere_stag: { url: 'http://monitoring.sphere.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
+    misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' },
+    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '' }
   }
 
   environments.each do |key, env|
-    nag = NagiosHarder::Site.new(env[:url], env[:username], env[:password], 2, "%Y-%m-%d %H:%M:%S")
-    unacked = nag.service_status(:service_status_types => [:warning, :critical], :service_props => [:no_scheduled_downtime, :state_unacknowledged, :checks_enabled])
+
+    uri = URI.parse(env[:url] + "status.cgi?servicestatustypes=20&serviceprops=42&host=all&nostatusheader&jsonoutput")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = false
+    request = Net::HTTP::Get.new(uri.request_uri)
+    request.basic_auth(env[:username], env[:password])
+    response = http.request(request)
+    services = JSON.parse(response.body)["status"]["service_status"]
 
     critical_count = 0
     warning_count = 0
-    unacked.each do |alert|
-      if alert["status"].eql? "CRITICAL"
+    services.each do |service|
+      if service["status"].eql? "CRITICAL"
         critical_count += 1
-      elsif alert["status"].eql? "WARNING"
+      elsif service["status"].eql? "WARNING"
         warning_count += 1
       end
     end
