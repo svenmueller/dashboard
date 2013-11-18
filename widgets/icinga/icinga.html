@@ -1,5 +1,6 @@
 <ul>
 <li data-bind-class="status">
+<p class="network-problem" data-showif="status | equals 'unknown'">Connection Problem!</p>
 <h1 class="title" data-bind="title"></h1>
 <h3 data-bind="criticals"></h3>
 <h4 data-showif="criticals | equals 1">critical</h4>
