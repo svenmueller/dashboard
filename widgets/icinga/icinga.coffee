@@ -6,4 +6,12 @@ class Dashing.Icinga extends Dashing.Widget
   onData: (data) ->
     # Handle incoming data
     # You can access the html node of this widget with `@node`
-    # Example: $(@node).fadeOut().fadeIn() will make the node flash each time data comes in.
+    $(@node).fadeOut().fadeIn()
+
+    if data.status
+      console.log data.status
+      # clear existing "status-*" classes
+      $(@get('node')).attr 'class', (i,c) ->
+        c.replace /\bstatus-\S+/g, ''
+      # add new class
+      $(@get('node')).addClass "status-" + data.status

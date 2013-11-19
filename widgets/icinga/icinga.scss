@@ -7,6 +7,19 @@ $failure_prio_low: #FF6600;
 $unknown: #B8B8B8;
 
 .widget-icinga {
+
+  &.status-ok {
+    background-color: green;
+
+    .icon-warning-sign {
+      display: inline-block;
+    }
+  }
+
+  &.status-unknown {
+    background-color: $unknown;
+  }
+
   li {
     position: absolute;
     top: 0;
@@ -36,54 +49,5 @@ $unknown: #B8B8B8;
       color: $failure_prio_high;
     }
   
-    &.green {
-      background-color: $success;
-
-      p {
-        &.updated-at {
-          color: lighten($success, 20%);
-        }
-      }
-    }
-
-    &.yellow {
-      background-color: $warning;
-
-      p {
-        &.updated-at {
-          color: lighten($warning, 20%);
-        }
-      }
-    }
-
-    &.red {
-      background-color: $failure_prio_high;
-
-      p {
-        &.updated-at {
-          color: lighten($failure_prio_high, 20%);
-        }
-      }
-    }
-
-    &.orange {
-      background-color: $failure_prio_low;
-
-      p {
-        &.updated-at {
-          color: lighten($failure_prio_low, 20%);
-        }
-      }
-    }
-
-    &.unknown {
-      background-color: $unknown;
-
-      p {
-        &.updated-at {
-          color: lighten($unknown, 20%);
-        }
-      }
-    }
   }
 }
