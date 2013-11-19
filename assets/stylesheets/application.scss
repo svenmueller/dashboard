@@ -166,7 +166,7 @@ h3 {
 .widget.status-warning {
   color: $text-danger-color;
   background-color: $background-warning-color-1;
-  @include animation(status-danger-background, 2s, ease, infinite);
+  @include animation(status-warning-background, 2s, ease, infinite);
 
   .icon-warning-sign {
     display: inline-block;
