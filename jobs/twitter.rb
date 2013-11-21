@@ -1,13 +1,16 @@
 require 'twitter'
 
+credentials_file = File.dirname(File.expand_path(__FILE__)) + '/../credentials.yml'
+credentials = YAML::load(File.open(credentials_file))
+
 
 #### Get your twitter keys & secrets:
 #### https://dev.twitter.com/docs/auth/tokens-devtwittercom
 Twitter.configure do |config|
-  config.consumer_key = 'QEeTIoGMlhs50bw2jxlNKA'
-  config.consumer_secret = ''
-  config.oauth_token = '14401202-cXLxsGhUrFs52Pww2LFBWd93L0OwhP77Kwk5AV9XI'
-  config.oauth_token_secret = ''
+  config.consumer_key = credentials['twitter']['consumer']['key']
+  config.consumer_secret = credentials['twitter']['consumer']['secret']
+  config.oauth_token = credentials['twitter']['oauth']['token']
+  config.oauth_token_secret = credentials['twitter']['oauth']['secret']
 end
 
 search_term = URI::encode('#commercetools OR @commercetools OR #sphereio OR @sphereio')

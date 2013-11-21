@@ -3,16 +3,17 @@ SCHEDULER.every '30s' do
   require "net/https"
   require "uri"
 
-
+  credentials_file = File.dirname(File.expand_path(__FILE__)) + '/../credentials.yml'
+  credentials = YAML::load(File.open(credentials_file))
 
   environments = {
-    grid_prod: { url: 'http://grid.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', prio: 1 },
-    grid_stag: { url: 'http://monitoring.grid.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', prio: 2 },
-    sphere_prod: { url: 'http://monitoring.sphere.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', prio: 1 },
-    sphere_stag: { url: 'http://monitoring.sphere.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', prio: 2 },
-    misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', prio: 1 },
-    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', prio: 2 },
-    muc: { url: 'http://monitoring.muc.cloud.commercetools.de/cgi-bin/icinga/', username: 'icingaguest', password: '', prio: 1 }
+    grid_prod: { url: 'http://grid.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 },
+    grid_stag: { url: 'http://monitoring.grid.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 },
+    sphere_prod: { url: 'http://monitoring.sphere.prod.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 },
+    sphere_stag: { url: 'http://monitoring.sphere.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 },
+    misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 },
+    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 },
+    muc: { url: 'http://monitoring.muc.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 }
   }
 
   environments.each do |key, env|
