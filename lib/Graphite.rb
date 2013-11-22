@@ -1,5 +1,5 @@
 require "rest-client"
-require "JSON"
+require "json"
 require "date"
 
 class Graphite
