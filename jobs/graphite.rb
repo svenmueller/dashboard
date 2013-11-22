@@ -19,7 +19,7 @@ SCHEDULER.every '30s', :first_in => 0 do
     points = q.points name, "-1h"
 
     # send to dashboard, so the number the meter and the graph widget can understand it
-    send_event 'status_5xx', { current: current, value: current, points: points }
+    send_event 'status_5xx', { current: current, value: current, points: points, graphcolor: "#fff"}
 end
 
 SCHEDULER.every '30s', :first_in => 0 do
@@ -34,7 +34,7 @@ SCHEDULER.every '30s', :first_in => 0 do
     points = q.points name, "-1h"
 
     # send to dashboard, so the number the meter and the graph widget can understand it
-    send_event 'status_2xx', { current: current, value: current, points: points }
+    send_event 'status_2xx', { current: current, value: current, points: points, graphcolor: "#fff" }
 end
 
 SCHEDULER.every '30s', :first_in => 0 do
@@ -49,7 +49,7 @@ SCHEDULER.every '30s', :first_in => 0 do
     points = q.points name, "-1h"
 
     # send to dashboard, so the number the meter and the graph widget can understand it
-    send_event 'events', { current: current, value: current, points: points }
+    send_event 'events', { current: current, value: current, points: points, graphcolor: "#fff" }
 end
 
 SCHEDULER.every '30s', :first_in => 0 do
@@ -64,5 +64,5 @@ SCHEDULER.every '30s', :first_in => 0 do
     points = q.points name, "-1h"
 
     # send to dashboard, so the number the meter and the graph widget can understand it
-    send_event 'errors', { current: current, value: current, points: points}
+    send_event 'errors', { current: current, value: current, points: points, graphcolor: "#fff"}
 end
