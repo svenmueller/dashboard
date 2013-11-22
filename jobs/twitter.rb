@@ -6,7 +6,7 @@ credentials = YAML::load(File.open(credentials_file))
 
 #### Get your twitter keys & secrets:
 #### https://dev.twitter.com/docs/auth/tokens-devtwittercom
-Twitter.configure do |config|
+twitter = Twitter::REST::Client.new do |config|
   config.consumer_key = credentials['twitter']['consumer']['key']
   config.consumer_secret = credentials['twitter']['consumer']['secret']
   config.oauth_token = credentials['twitter']['oauth']['token']
@@ -17,10 +17,10 @@ search_term = URI::encode('#commercetools OR @commercetools OR #sphereio OR @sph
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
   begin
-    tweets = Twitter.search("#{search_term}").results
+    tweets = twitter.search("#{search_term}")
 
     if tweets
-      tweets.map! do |tweet|
+      tweets = tweets.map do |tweet|
         { name: tweet.user.name, body: tweet.text, avatar: tweet.user.profile_image_url_https }
       end
       send_event('twitter_mentions', comments: tweets)
