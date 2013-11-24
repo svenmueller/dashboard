@@ -1,9 +1,7 @@
 require 'net/http'
 require 'json'
 
-credentials_file = File.dirname(File.expand_path(__FILE__)) + '/../credentials.yml'
-credentials = YAML::load(File.open(credentials_file))
-url  = credentials['jenkins']['url']
+url = 'http://hub.ci.cloud.commercetools.de/'
 seconds_since_last_build_failed = 0
 seconds_last_build_record = 0
 is_any_build_failing = false
@@ -76,7 +74,7 @@ SCHEDULER.every '6s', :first_in => 0 do
     http     = Net::HTTP.new(uri.host, uri.port)
     api_url  = url + '/view/' + view[:name] + '/api/json?tree=jobs[name,color]'
     response = http.request(Net::HTTP::Get.new(api_url))
-    jobs    = JSON.parse(response.body)['jobs']
+    jobs     = JSON.parse(response.body)['jobs']
 
     jobs.each do |job|
       if job['color'].include? 'red'
