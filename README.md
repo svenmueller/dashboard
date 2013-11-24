@@ -7,7 +7,7 @@ A company dashboard based on shopifys dashing framework. It shows the icinga sta
 * install dashing framework [dashing](http://shopify.github.io/dashing/)
 * download/clone project
 * adjust job configurations (e.g. in `jobs/icinga.rb` etc.)
-* add credentials in `credentials.yml`
+* add credentials in `credentials.yml` (do *not* commit this file)
 * use `git update-index --assume-unchanged credentials.yml` to avoid commiting the `credentials.yml` accidently
 * start dashboard
  
