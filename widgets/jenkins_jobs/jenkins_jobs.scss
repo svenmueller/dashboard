@@ -1,0 +1,36 @@
+// ----------------------------------------------------------------------------
+// Widget-jenkins-jobs styles
+// ----------------------------------------------------------------------------
+.widget-jenkins-jobs {
+  background: #333333;
+
+  .title {
+    color: #FFF;
+  }
+
+  .job {
+    color: #FFF;
+    background-color: black;
+    float: left;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 10px;
+    font-size: 30px
+  }
+
+  .job[data-state="blue"] {
+    background-color: green;
+  }
+
+  .job[data-state="yellow"] {
+    background-color: #eeae32;
+  }
+
+  .job[data-state="red"] {
+    background-color: #e82711;
+  }
+
+  .job[data-state="disabled"], .job[data-state="aborted"] {
+    background-color: grey;
+  }
+}
