@@ -1,0 +1,60 @@
+// ----------------------------------------------------------------------------
+// Widget-jenkins-build styles
+// ----------------------------------------------------------------------------
+.widget-jenkins-build {
+  background: #47A8BB;
+
+  .title {
+    color: #FFF;
+  }
+
+  .job {
+    color: #FFF;
+    background-color: gray;
+    float: left;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 10px;
+    width: 94%;
+  }
+
+  .job[data-state="blue_anime"] {
+    background-color: blue;
+    -webkit-animation:flashgreen;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count:infinite;
+  }
+
+  .job[data-state="yellow_anime"] {
+    background-color: #eeae32;
+    -webkit-animation:flashyellow;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count:infinite;
+  }
+
+  .job[data-state="red_anime"] {
+    background-color: #e82711;
+    -webkit-animation:flashred;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count:infinite;
+  }
+
+  .job[data-state="disabled_anime"], .job[data-state="aborted_anime"] {
+    background-color: grey;
+    -webkit-animation:flashgrey;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count:infinite;
+  }
+}
+
+@-webkit-keyframes flashgreen
+{50% {background:#000066;}}
+
+@-webkit-keyframes flashyellow
+{50% {background:#ff8018;}}
+
+@-webkit-keyframes flashred
+{50% {background:#9b0000;}}
+
+@-webkit-keyframes flashgrey
+{50% {background:#333333;}}
