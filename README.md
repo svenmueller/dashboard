@@ -6,9 +6,9 @@ A company dashboard based on shopifys dashing framework. It shows the icinga sta
 
 * install dashing framework [dashing](http://shopify.github.io/dashing/)
 * download/clone project
-* adjust job settings/credentials
- * define icinga environments (url, username, password) to be shown on dashboard (`jobs/icinga.rb`)
- * define twitter keys/secrets (`jobs/twitter.rb`)
+* adjust job configurations (e.g. in `jobs/icinga.rb` etc.)
+* add credentials in `credentials.yml`
+* use `git update-index --assume-unchanged credentials.yml` to avoid commiting the `credentials.yml` accidently
 * start dashboard
  
 ```bash
