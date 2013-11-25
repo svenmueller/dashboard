@@ -81,9 +81,3 @@ SCHEDULER.every '1s', :first_in => 0 do |job|
 
   send_event('jenkins_last_sphere_build_failed_since', { current: seconds_since_last_build_failed , last: seconds_last_build_record})
 end
-
-
-def trim_job_name(job_name)
-  job_name = job_name.gsub("sphere-", "");
-  return job_name
-end 
