@@ -19,28 +19,29 @@
   }
 
   .job[data-state="blue_anime"] {
-    background-color: blue;
+    background-color: #475F77;
     -webkit-animation:flashgreen;
     -webkit-animation-duration:3s;
     -webkit-animation-iteration-count:infinite;
   }
 
   .job[data-state="yellow_anime"] {
-    background-color: #eeae32;
+    background-color: #E9B64D;
     -webkit-animation:flashyellow;
     -webkit-animation-duration:3s;
     -webkit-animation-iteration-count:infinite;
   }
 
   .job[data-state="red_anime"] {
-    background-color: #e82711;
+    background-color: #D74B4B;
     -webkit-animation:flashred;
     -webkit-animation-duration:3s;
     -webkit-animation-iteration-count:infinite;
   }
 
   .job[data-state="disabled_anime"], .job[data-state="aborted_anime"] {
-    background-color: grey;
+    background-color: #DCDDD8;
+    color: #333333;
     -webkit-animation:flashgrey;
     -webkit-animation-duration:3s;
     -webkit-animation-iteration-count:infinite;
@@ -48,13 +49,13 @@
 }
 
 @-webkit-keyframes flashgreen
-{50% {background:#000066;}}
+{50% {background: #5D8AA0;}}
 
 @-webkit-keyframes flashyellow
-{50% {background:#ff8018;}}
+{50% {background: #192823;}}
 
 @-webkit-keyframes flashred
-{50% {background:#9b0000;}}
+{50% {background: #A60000;}}
 
 @-webkit-keyframes flashgrey
-{50% {background:#333333;}}
+{50% {background: #AFAFA8;}}

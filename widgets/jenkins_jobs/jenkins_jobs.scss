@@ -19,18 +19,19 @@
   }
 
   .job[data-state="blue"] {
-    background-color: green;
+    background-color: #81C6DD;
   }
 
   .job[data-state="yellow"] {
-    background-color: #eeae32;
+    background-color: #E9B64D;
   }
 
   .job[data-state="red"] {
-    background-color: #e82711;
+    background-color: #D74B4B;
   }
 
   .job[data-state="disabled"], .job[data-state="aborted"] {
-    background-color: grey;
+    background-color: #DCDDD8;
+    color: #333333;
   }
 }
