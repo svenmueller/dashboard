@@ -10,27 +10,11 @@
 
   .job {
     color: #FFF;
-    background-color: gray;
+    background-color: #D45C36;
     float: left;
     padding: 5px;
     margin: 3px;
     border-radius: 10px;
     width: 94%;
-  }
-
-  .job[data-state="blue"], .job[data-state="blue_anime"] {
-    background-color: green;
-  }
-
-  .job[data-state="yellow"], .job[data-state="yellow_anime"] {
-    background-color: eeae32;
-  }
-
-  .job[data-state="red"], .job[data-state="red_anime"] {
-    background-color: e82711;
-  }
-
-  .job[data-state="disabled"], .job[data-state="aborted"] {
-    background-color: grey;
   }
 }
