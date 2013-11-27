@@ -126,6 +126,8 @@ def trim_job_name(job_name)
   job_name = job_name.gsub("grid-", "");
   job_name = job_name.gsub("store-", "");
   job_name = job_name.gsub("sphere-", "");
+  job_name = job_name.gsub("-public-deb", "");
+  job_name = job_name.gsub("-private-deb", "");
   job_name = job_name.gsub("solr", "s");
   job_name = job_name.gsub("automation", "am");
   job_name = job_name.gsub("webtests-production", "wp");
