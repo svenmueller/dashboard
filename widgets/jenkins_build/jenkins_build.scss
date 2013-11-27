@@ -16,26 +16,27 @@
     margin: 3px;
     border-radius: 10px;
     width: 94%;
+    font-size: 25px
   }
 
   .job[data-state="blue_anime"] {
     background-color: #475F77;
     -webkit-animation:flashgreen;
-    -webkit-animation-duration:3s;
+    -webkit-animation-duration:2s;
     -webkit-animation-iteration-count:infinite;
   }
 
   .job[data-state="yellow_anime"] {
     background-color: #E9B64D;
     -webkit-animation:flashyellow;
-    -webkit-animation-duration:3s;
+    -webkit-animation-duration:2s;
     -webkit-animation-iteration-count:infinite;
   }
 
   .job[data-state="red_anime"] {
     background-color: #D74B4B;
     -webkit-animation:flashred;
-    -webkit-animation-duration:3s;
+    -webkit-animation-duration:2s;
     -webkit-animation-iteration-count:infinite;
   }
 
@@ -43,7 +44,7 @@
     background-color: #DCDDD8;
     color: #333333;
     -webkit-animation:flashgrey;
-    -webkit-animation-duration:3s;
+    -webkit-animation-duration:2s;
     -webkit-animation-iteration-count:infinite;
   }
 }

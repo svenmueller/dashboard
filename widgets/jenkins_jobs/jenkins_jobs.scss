@@ -15,22 +15,22 @@
     padding: 5px;
     margin: 3px;
     border-radius: 10px;
-    font-size: 30px
+    font-size: 25px
   }
 
-  .job[data-state="blue"] {
+  .job[data-state="blue"], .job[data-state="blue_anime"] {
     background-color: #81C6DD;
   }
 
-  .job[data-state="yellow"] {
+  .job[data-state="yellow"], .job[data-state="yellow_anime"] {
     background-color: #E9B64D;
   }
 
-  .job[data-state="red"] {
+  .job[data-state="red"], .job[data-state="red_anime"] {
     background-color: #D74B4B;
   }
 
-  .job[data-state="disabled"], .job[data-state="aborted"] {
+  .job[data-state="disabled"], .job[data-state="disabled_anime"], .job[data-state="aborted"], .job[data-state="aborted_anime"].job[data-state="grey"], .job[data-state="grey_anime"] {
     background-color: #DCDDD8;
     color: #333333;
   }
