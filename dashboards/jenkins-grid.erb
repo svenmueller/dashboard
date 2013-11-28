@@ -4,18 +4,13 @@
     vertical-align: top;
   }
 </style>
-<script type='text/javascript'>
-  $(function() {
-    Dashing.numColumns = 6
-  });
-</script>
 <div class="gridster">
   <ul>
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-view="Image" data-image="/logo.png"></div>
     </li>
     <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="jenkins_load" data-view="Meter" data-title="Build Nodes" data-min="0" data-max="5"></div>
+      <div data-id="jenkins_load" data-view="Meter" data-title="Build Nodes" data-min="0" data-max="6"></div>
     </li>
     <li data-row="3" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="jenkins_last_failed_since" data-view="Number" data-title="No builds failed since"></div>
@@ -26,7 +21,7 @@
     <li data-row="2" data-col="2" data-sizex="1" data-sizey="2">
       <div data-id="jenkins_queue" data-view="Jenkins_Queue" data-title="Build Queue"></div>
     </li>
-    <li data-row="1" data-col="2" data-sizex="4" data-sizey="1">
+    <li data-row="1" data-col="2" data-sizex="3" data-sizey="1">
       <div data-id="jenkins_jobs_grid_failed" data-view="Jenkins_Jobs" data-title="Failing, Unstable and Disabled GRID Jobs"></div>
     </li>
     <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
@@ -43,9 +38,6 @@
     </li>
     <li data-row="3" data-col="4" data-sizex="1" data-sizey="1">
       <div data-id="jenkins_status_view_grid_webtests" data-view="Icinga" data-unordered="true" data-title="WEBTESTS"></div>
-    </li>
-    <li data-row="3" data-col="5" data-sizex="1" data-sizey="1">
-      <div data-view="Clock"></div>
     </li>
   </ul>
 </div>
