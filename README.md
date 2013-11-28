@@ -5,6 +5,7 @@ A company dashboard based on shopifys [dashing framework](http://shopify.github.
 * adjust job configurations (e.g. in `jobs/icinga.rb` etc.)
 * adjust dashboard configurations (e.g. in `dashboards/jenkins-sphere.erb` etc.)
 * add credentials in `credentials.yml`
+
 ```yaml
 graphite:
   username:
