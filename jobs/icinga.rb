@@ -13,7 +13,7 @@ SCHEDULER.every '30s' do
     sphere_stag: { url: 'http://monitoring.sphere.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 },
     misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 },
     ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 },
-    muc: { url: 'http://monitoring.muc.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 }
+    muc: { url: 'http://puppetmaster.muc.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 }
   }
 
   environments.each do |key, env|
