@@ -1,5 +1,7 @@
 require "./lib/graphite"
 
+stores = ['airfield', 'backjoy', 'bootstrap', 'brita', 'cdl', 'cpr', 'fbh', 'ggbailey', 'kela', 'kfr', 'qspex', 'rbcollection', 'redbull', 'rollingrock', 'ser', 'tiggers']
+
 credentials_file = File.dirname(File.expand_path(__FILE__)) + '/../credentials.yml'
 credentials = YAML::load(File.open(credentials_file))
 
@@ -67,9 +69,6 @@ SCHEDULER.every '30s', :first_in => 0 do
     send_event 'errors', { current: current, value: current, points: points, graphcolor: "#fff"}
 end
 
-
-stores = ['airfield', 'backjoy', 'bootstrap', 'brita', 'cdl', 'cpr', 'fbh', 'ggbailey', 'kela', 'kfr', 'qspex', 'rbcollection', 'redbull', 'rollingrock', 'ser', 'tiggers']
-
 SCHEDULER.every '30s', :first_in => 0 do
 
     orders = Array.new    #=> []
@@ -88,6 +87,33 @@ SCHEDULER.every '30s', :first_in => 0 do
 
     orders = orders.sort_by {|record| record[:value]}
     send_event('orders', { items: orders.reverse! })
+end
+
+SCHEDULER.every '30s', :first_in => 0 do
+
+    errors_per_store = Array.new    #=> []
+
+    # Create an instance of our helper class
+    q = Graphite.new url
+
+    stores.each do |store|
+
+        # special handling for some stores
+        if store == "rbcollection"
+            store = "rbc"
+        elsif store == "tiggers"
+            store = "mgvbv"
+        end
+
+        name = "integral(sumSeries(nonNegativeDerivative(servers.de.commercetools.prod.grid.app*.commercetools.access.requests.#{store}.5xx)))"
+        
+        # get total value
+        current = q.value name, "-24h"
+        errors_per_store.push({ label: store, value: current })
+    end
+
+    errors_per_store = errors_per_store.sort_by {|record| record[:value]}
+    send_event('errors_per_store', { items: errors_per_store.reverse! })
 end
 
 
