@@ -11,9 +11,9 @@ SCHEDULER.every '30s' do
     grid_stag: { url: 'http://monitoring.grid.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 },
     sphere_prod: { url: 'http://monitoring.sphere.prod.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 },
     sphere_stag: { url: 'http://monitoring.sphere.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 },
+    sphere_frontend: { url: 'http://monitoring.sphere-frontend.prod.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 },
     misc_prod: { url: 'http://monitoring.misc.prod.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 },
-    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 },
-    muc: { url: 'http://puppetmaster.muc.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 1 }
+    ci: { url: 'http://monitoring.ci.cloud.commercetools.de/cgi-bin/icinga/', username: credentials['icinga']['username'], password: credentials['icinga']['password'], prio: 2 }
   }
 
   environments.each do |key, env|
